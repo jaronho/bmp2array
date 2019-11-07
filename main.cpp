@@ -88,9 +88,13 @@ int main(int argc, char* argv[]) {
         arrayBuffer += "static const unsigned int bmp_" + fileInfo[2] + "_height = " + std::to_string(bmp.height()) + ";";
         arrayBuffer += "\n";
         if (16 == bit) {
-            arrayBuffer += "static const unsigned short bmp_" + fileInfo[2] + "_raw_data[] = {";
+            arrayBuffer += "static const unsigned int bmp_" + fileInfo[2] + "_bit = 16;";
+            arrayBuffer += "\n";
+            arrayBuffer += "static const unsigned short bmp_" + fileInfo[2] + "_data[] = {";
         } else if (24 == bit) {
-            arrayBuffer += "static const unsigned int bmp_" + fileInfo[2] + "_raw_data[] = {";
+            arrayBuffer += "static const unsigned int bmp_" + fileInfo[2] + "_bit = 24;";
+            arrayBuffer += "\n";
+            arrayBuffer += "static const unsigned int bmp_" + fileInfo[2] + "_data[] = {";
         }
         PixelMatrix pixels = bmp.toPixelMatrix();
         unsigned int bmpSize = (unsigned int)bmp.width() * (unsigned int)bmp.height();
